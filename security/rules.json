@@ -1,0 +1,243 @@
+{
+  "version": "1.0.0",
+  "last_updated": "2026-01-15",
+  "trackers": {
+    
+    "analytics": [
+      "google-analytics.com",
+      "googletagmanager.com",
+      "analytics.google.com",
+      "ssl.google-analytics.com",
+      "stats.g.doubleclick.net",
+      "matomo.cloud",
+      "piwik.org",
+      "mixpanel.com",
+      "amplitude.com",
+      "segment.com",
+      "heap.io",
+      "hotjar.com",
+      "clarity.ms",
+      "mouseflow.com",
+      "fullstory.com",
+      "smartlook.com",
+      "plausible.io",
+      "simpleanalytics.com"
+    ],
+    "advertising": [
+      "doubleclick.net",
+      "googleadservices.com",
+      "googleads.g.doubleclick.net",
+      "adservice.google.com",
+      "pagead2.googlesyndication.com",
+      "adsrvr.org",
+      "adnxs.com",
+      "criteo.com",
+      "outbrain.com",
+      "taboola.com",
+      "zedo.com",
+      "exelator.com",
+      "rfihub.com",
+      "adroll.com",
+      "lijit.com",
+      "openx.net",
+      "pubmatic.com",
+      "rubiconproject.com",
+      "indexww.com",
+      "sovrn.com",
+      "contextweb.com"
+    ],
+    "social_media": [
+      "facebook.com/tr",
+      "connect.facebook.net",
+      "facebook.net",
+      "fbcdn.net",
+      "platform.twitter.com",
+      "t.co",
+      "analytics.twitter.com",
+      "linkedin.com/analytics",
+      "ads.linkedin.com",
+      "platform.linkedin.com",
+      "pinterest.com/track",
+      "ct.pinterest.com",
+      "instagram.com/analytics",
+      "tiktok.com/analytics",
+      "snapchat.com/analytics",
+      "reddit.com/analytics",
+      "quora.com/analytics"
+    ],
+    "fingerprinting": [
+      "fingerprintjs.com",
+      "fingerprintjs2",
+      "browser-fingerprint",
+      "canvas-fingerprint",
+      "webgl-fingerprint",
+      "audio-fingerprint",
+      "clientjs",
+      "fp-collect",
+      "fingerprint-pro",
+      "device-fingerprint"
+    ],
+    "cookies": [
+      "cookiebot.com",
+      "onetrust.com",
+      "cookie-script.com",
+      "cookiepro.com",
+      "trustarc.com",
+      "cookielaw.org",
+      "consent.google.com",
+      "usercentrics.eu",
+      "didomi.io",
+      "quantcast.com",
+      "civiccomputing.com"
+    ],
+    "email_tracking": [
+      "mailtracking",
+      "email-tracking",
+      "open-tracking",
+      "click-tracking",
+      "list-manage.com",
+      "mailchimp.com/track",
+      "sendgrid.net/track",
+      "emailsrvr.com/track",
+      "sparkpost.com/track"
+    ],
+    "malvertising": [
+      "malware",
+      "adware",
+      "spyware",
+      "popunder",
+      "pop-up",
+      "malicious",
+      "exploit",
+      "phishing",
+      "fake-news",
+      "clickbait"
+    ]
+  },
+  "patterns": {
+    "url_patterns": [
+      "*/track*",
+      "*/pixel*",
+      "*/beacon*",
+      "*/collect*",
+      "*/analytics*",
+      "*/metrics*",
+      "*/telemetry*",
+      "*/log*",
+      "*/event*",
+      "*/pageview*",
+      "*/impression*",
+      "*/conversion*",
+      "*/retargeting*"
+    ],
+    "query_params": [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_term",
+      "utm_content",
+      "fbclid",
+      "gclid",
+      "msclkid",
+      "dclid",
+      "reddit_cid",
+      "twclid",
+      "li_fat_id",
+      "mc_cid",
+      "trk",
+      "ref",
+      "source",
+      "campaign",
+      "click_id"
+    ],
+    "script_names": [
+      "tracking.js",
+      "analytics.js",
+      "pixel.js",
+      "beacon.js",
+      "fingerprint.js",
+      "client.js",
+      "telemetry.js",
+      "metrics.js",
+      "collector.js",
+      "logger.js"
+    ],
+    "image_pixels": [
+    "pixel.gif",
+    "pixel.png",
+    "track.gif",
+    "track.png",
+    "beacon.gif",
+    "beacon.png",
+    "1x1.gif",
+    "1x1.png",
+    "blank.gif",
+    "spacer.gif"
+    ]
+},
+"domains": {
+    "allowlist": [
+    "localhost",
+    "127.0.0.1",
+    "*.local",
+    "*.gov",
+    "*.edu",
+    "*.bank",
+    "*.hospital"
+    ],
+    "blocklist": [
+    "*.xyz",
+    "*.top",
+    "*.club",
+    "*.click",
+    "*.download",
+    "*.stream",
+    "*.date",
+    "*.trade",
+    "*.science"
+    ]
+},
+"privacy_policies": {
+    "trusted_sites": [
+    "duckduckgo.com",
+    "protonmail.com",
+    "signal.org",
+    "mozilla.org",
+    "wikipedia.org",
+    "eff.org",
+    "privacytools.io"
+    ],
+    "dangerous_sites": [
+    "facebook.com",
+    "tiktok.com",
+    "instagram.com",
+    "pinterest.com",
+    "snapchat.com"
+    ]
+},
+"custom_rules": [
+    {
+    "name": "منع طلبات POST للمتتبعين",
+    "action": "block",
+    "method": "POST",
+    "url_contains": ["track", "collect", "pixel"]
+    },
+    {
+    "name": "منع iframes المتتبعة",
+    "action": "remove",
+    "element": "iframe",
+    "url_contains": ["track", "analytics", "ads"]
+    },
+    {
+      "name": "منع الصور المخفية",
+      "action": "remove",
+      "element": "img",
+      "condition": "width <= 1 AND height <= 1"
+    }
+  ],
+  "stats": {
+    "total_rules": 120,
+    "total_trackers": 85,
+    "last_updated_by": "Privacy Shield Team"
+  }
+}
